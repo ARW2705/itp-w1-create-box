@@ -4,22 +4,15 @@ def create_box(height, width, char):
     if height < 1 or width < 1:
         return 'Invalid dimensions, height and/or width must be at least 1.'
     else:
-        end_str = ''
-        for h in range(height):
-            end_str += char * width + '\n'
-        return end_str
+        return height * (width * char + '\n')
 
 def create_empty_box(height, width, char):
     if height < 1 or width < 1:
         return 'Invalid dimensions, height and/or width must be at least 1.'
     else:
-        end_str = ''
-        for h in range(height):
-            if h == 0 or h == (height - 1):
-                end_str += char * width + '\n'
-            else:
-                end_str += char + (' ' * (width - 2)) + char + '\n'
-        return end_str 
+        row_ends = width * char + '\n'
+        row_inner = char + (' ' * (width - 2)) + char + '\n'
+        return row_ends + row_inner * (height - 2) + row_ends
 
 
 if __name__ == '__main__':
